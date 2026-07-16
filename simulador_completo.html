@@ -13,14 +13,14 @@
 
 <nav>
   <button onclick="mostrarSeccion('parametros');">Parámetros</button>
-  <button >Clientes</button>
+  <button onclick="mostrarSeccion('clientes')">Clientes</button>
 </nav>
 
 <section class="activa" id="parametros">
   <h2>Configurar Parámetros</h2>
 
   <label>Tasa de interés:</label>
-  <input type="number" min="10" max="20" value="15" id="tasaInteres">
+  <input type="number" min="10" max="20" value="15" id="tasaInteres" placeholder="">
   <span>%</span>
 
   <br>
@@ -32,15 +32,15 @@
 <section class="activa" id="clientes">
   <h2>Registro de Clientes</h2>
 
-  <input type="text" >
-  <input type="text" >
-  <input type="text" >
-  <input type="number" >
-  <input type="number" >
+  <input type="text" id="txtCedula" placeholder="">
+  <input type="text" id="textNombre" placeholder="">
+  <input type="text" id="textApellido" placeholder="">
+  <input type="number" id="numIngresos" placeholder="">
+  <input type="number" id="numEgresos" placeholder="">
 
   <br>
 
-  <button >Guardar cliente</button>
+  <button onclick="guardarCliente();">Guardar cliente</button>
   <button >Limpiar</button>
 
   <table>
