@@ -72,7 +72,7 @@ function pintarClientes(){
     "<td>"+infoCliente.cedula+"</td>" +
     "<td>"+infoCliente.nombre+"</td>"+"<td>"+infoCliente.apellido+"</td>"+
     "<td>"+infoCliente.ingresos+"</td>"+"<td>"+infoCliente.egresos+"</td>"+
-    "<td><button>Actualizar</button</td>"+
+    "<td><button onclick=\"seleccionarCliente('" + infoCliente.cedula + "')\">Actualizar</button></td>"+
     "</tr>"
   }
   cmpClientes.innerHTML = contenido
@@ -90,13 +90,17 @@ function buscarCliente(cedula){
 }
 
 function seleccionarCliente(cedula){
-  let clienteSeleccionado = buscarCliente(cedula)
+  clienteSeleccionado = buscarCliente(cedula)
   if(clienteSeleccionado != null){
     mostrarTextoEnCaja("txtCedula",clienteSeleccionado.cedula);
     mostrarTextoEnCaja("textNombre",clienteSeleccionado.nombre);
     mostrarTextoEnCaja("textApellido",clienteSeleccionado.apellido);
     mostrarTextoEnCaja("numIngresos",clienteSeleccionado.ingresos);
     mostrarTextoEnCaja("numEgresos",clienteSeleccionado.egresos);
+
+    document.getElementById("btnGuardar").innerText= "Actualizar Cliente"
+    document.getElementById("txtCedula").readOnly= true
+
   }else{
     alert("no existe")
   }
