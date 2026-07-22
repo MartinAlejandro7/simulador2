@@ -1,61 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Sistema de Créditos</title>
+  <link rel="stylesheet" href="simulador_completo.css">
 </head>
+
 <body>
 
-<header>
-  <h1>Sistema Básico de Créditos</h1>
-   <link rel="stylesheet" href="simulador_completo.css">
-</header>
+  <header>
+    <h1>Sistema Básico de Créditos</h1>
+    
+  </header>
 
-<nav>
-  <button onclick="mostrarSeccion('parametros');">Parámetros</button>
-  <button onclick="mostrarSeccion('clientes')">Clientes</button>
-</nav>
+  <nav>
+    <button onclick="mostrarSeccion('parametros');">Parámetros</button>
+    <button onclick="mostrarSeccion('clientes')">Clientes</button>
+    <button onclick="mostrarSeccion('credito')">Credito</button>
+  </nav>
 
-<section class="activa" id="parametros">
-  <h2>Configurar Parámetros</h2>
+  <section class="activa" id="parametros">
+    <h2>Configurar Parámetros</h2>
 
-  <label>Tasa de interés:</label>
-  <input type="number" min="10" max="20" value="15" id="tasaInteres" placeholder="">
-  <span>%</span>
+    <label>Tasa de interés:</label>
+    <input type="number" min="10" max="20" value="15" id="tasaInteres" placeholder="">
+    <span>%</span>
 
-  <br>
-  <button onclick="guardarTasa()">Guardar tasa</button>
+    <br>
+    <button onclick="guardarTasa()">Guardar tasa</button>
 
-  <p id="mensajeTasa"></p>
-</section>
+    <p id="mensajeTasa"></p>
+  </section>
+  
 
-<section class="activa" id="clientes">
-  <h2>Registro de Clientes</h2>
 
-  <input type="text" id="txtCedula" placeholder="">
-  <input type="text" id="textNombre" placeholder="">
-  <input type="text" id="textApellido" placeholder="">
-  <input type="number" id="numIngresos" placeholder="">
-  <input type="number" id="numEgresos" placeholder="">
 
-  <br>
+  <section class="activa" id="clientes">
+    <h2>Registro de Clientes</h2>
 
-  <button id="btnGuardar" onclick="guardarCliente();">Guardar cliente</button>
-  <button onclick="limpiar()">Limpiar</button>
+    <input type="text" id="txtCedula" placeholder="Cedula">
+    <input type="text" id="textNombre" placeholder="Nombre">
+    <input type="text" id="textApellido" placeholder="Apellido">
+    <input type="number" id="numIngresos" placeholder="Ingresos">
+    <input type="number" id="numEgresos" placeholder="Egresos">
 
-  <table>
-    <thead>
-      <tr>
-        <th>Cédula</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Ingresos</th>
-        <th>Egresos</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tablaClientes">
-       <tr>
+    <br>
+
+
+    <button id="btnGuardar" onclick="guardarCliente();">Guardar cliente</button>
+    <button onclick="limpiar()">Limpiar</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cédula</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Ingresos</th>
+          <th>Egresos</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaClientes">
+        <tr>
           <td>1712345678</td>
           <td>Juan</td>
           <td>Pérez</td>
@@ -88,13 +96,38 @@
             <button>Eliminar</button>
           </td>
         </tr>
-    </tbody>
-  </table>
-</section>
+      </tbody>
+    </table>
+  </section>
+  <section class="activa" id="credito">
+    <h2 >Solicitar Crédito</h2>
+
+    <input type="text" id="buscarCedulaCredito">
+    <button onclick="buscarClienteCredito()">Buscar cliente</button>
+
+    <div id="datosClienteCredito" class="card"></div>
+
+    <input type="number" id="montoCredito">
+    <input type="number" id="plazoCredito">
+
+    <br>
+
+    <button onclick="calcularCredito()">Calcular crédito</button>
+
+    <div id="resultadoCredito" ></div>
+
+    <button id="btnSolicitarCredito" onclick="solicitarCredito()" disabled>
+      Solicitar crédito
+    </button>
+  </section>
 
 
 
-<script src="simulador_completo.js"></script>
-<script src="utilitarios.js"></script>
+
+
+
+  <script src="simulador_completo.js"></script>
+  <script src="utilitarios.js"></script>
 </body>
+
 </html>

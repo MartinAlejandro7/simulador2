@@ -19,7 +19,7 @@ function recuperarFloat(idComponente) {
 function mostrarTexto(idComponente, mensaje) {
     let componente;
     componente = document.getElementById(idComponente);
-    componente.innerText = mensaje;
+    componente.innerHTML = mensaje;
 }
 function mostrarTextoEnCaja(idComponente, mensaje) {
     let componente;
