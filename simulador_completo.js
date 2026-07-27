@@ -15,6 +15,7 @@ function ocultarSecciones() {
   document.getElementById("parametros").classList.remove("activa")
   document.getElementById("clientes").classList.remove("activa")
   document.getElementById("credito").classList.remove("activa")
+  document.getElementById("listaCreditos").classList.remove("activa")
 
 }
 
@@ -260,7 +261,10 @@ function solicitarCredito() {
   let credito = {};
 
   credito.cedula = clienteSeleccionado.cedula;
+  credito.nombre = clienteSeleccionado.nombre
+  credito.apellido = clienteSeleccionado.apellido
   credito.monto = montoCalculado;
+  credito.tasa = tasaInteres
   credito.plazo = plazoCalculado;
   credito.cuota = cuotaCalculada;
 
@@ -268,3 +272,49 @@ function solicitarCredito() {
 
   alert("Crédito registrado correctamente");
 }
+
+function buscarCreditos(cedula) {
+  let cliente = buscarCliente(cedula);
+  if (cliente == null) {
+    return []
+  }
+
+  let creditoEncontrado = [];
+
+  for (let i = 0; i < creditos.length; i++) {
+    let credito = creditos[i]
+
+    if (credito.cedula == cedula) {
+      creditoEncontrado.push(credito);
+    }
+
+  }
+  return creditoEncontrado;
+}
+
+function pintarCreditos(creditos) {
+    let contenido = "";
+    for (let i = 0; i < creditos.length; i++) {
+        let credito = creditos[i];
+        let cliente = buscarCliente(credito.cedula);
+        contenido = contenido +
+            "<tr>" +
+            "<td>" + credito.cedula + "</td>" +
+            "<td>" + cliente.nombre + "</td>" +
+            "<td>" + cliente.apellido + "</td>" +
+            "<td>" + credito.monto + "</td>" +
+            "<td>" + credito.tasa +"%"+ "</td>" +
+            "<td>" + credito.plazo +"años"+ "</td>" +
+            "<td>" + credito.cuota.toFixed(2) + "</td>" +
+            "</tr>";
+    }
+    document.getElementById("tablaCreditos").innerHTML = contenido;
+}
+
+function buscarCreditosCliente(){
+  let cedula = recuperaraTexto("buscarCedulaListado")
+  
+  let creditosCliente = buscarCreditos(cedula)
+  pintarCreditos(creditosCliente)
+}
+ 
